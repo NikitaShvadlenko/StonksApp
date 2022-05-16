@@ -38,6 +38,14 @@ targets:
       - path: "StonksApp"
         excludes:
           - "Packages/**/"
+          
+  StonksAppWidget:
+    platform: iOS
+    type: application
+    sources:
+      - path: "StonksAppWidget"
+        excludes:
+          - "Packages/**/"
     dependencies:
       - package: SharedResources
       

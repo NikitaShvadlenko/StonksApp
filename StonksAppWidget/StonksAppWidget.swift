@@ -8,6 +8,7 @@
 
 import WidgetKit
 import SwiftUI
+import SharedResources
 
 struct Provider: TimelineProvider {
 
@@ -86,7 +87,16 @@ struct StonksWidgetEntryView : View {
         Text(entry.error ? "± ––––" :
                 "\(entry.differenceMode == .up ? "+" : " ") \(String(format: "%.2f", entry.data.difference))")
         .bold()
-        .foregroundColor(Color("\(entry.differenceMode)Color"))
+        .foregroundColor(
+            switch entry.differenceMode {
+            case .up:
+                Asset.Colors.upColor.color
+            case .down:
+                Asset.Colors.downColor.color
+            default:
+                Asset.Colors.errorColor.color
+            }
+        )
         .font(family == .systemSmall ? .footnote : .title2)
     }
 
