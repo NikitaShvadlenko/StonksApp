@@ -87,16 +87,16 @@ struct StonksWidgetEntryView : View {
         Text(entry.error ? "± ––––" :
                 "\(entry.differenceMode == .up ? "+" : " ") \(String(format: "%.2f", entry.data.difference))")
         .bold()
-        .foregroundColor(
+        .foregroundColor({ () -> Color in
             switch entry.differenceMode {
             case .up:
-                Asset.Colors.upColor.color
+                return Color(Asset.Colors.upColor.color)
             case .down:
-                Asset.Colors.downColor.color
+                return Color(Asset.Colors.downColor.color)
             default:
-                Asset.Colors.errorColor.color
+                return Color(Asset.Colors.errorColor.color)
             }
-        )
+        }())
         .font(family == .systemSmall ? .footnote : .title2)
     }
 
